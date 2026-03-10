@@ -118,5 +118,67 @@ def list_to_dict(L):
         d[i] = L[i]
     return d
 
+
+def max_somme(liste_de_listes):
+    """
+    ترجع القائمة التي لها أكبر مجموع لعناصرها
+    """
+    if not liste_de_listes:  # إذا كانت القائمة فارغة
+        return []
+    
+    # استخدام max مع key=sum لإيجاد القائمة ذات أكبر مجموع
+    return max(liste_de_listes, key=sum)
+
+def max_longueur(liste_de_listes):
+    """
+    ترجع أطول قائمة
+    """
+    if not liste_de_listes:
+        return []
+    
+    # استخدام max مع key=len لإيجاد أطول قائمة
+    return max(liste_de_listes, key=len)
+
+def max_premier(liste_de_listes):
+    """
+    ترجع القائمة التي لها أكبر قيمة في أول عنصر
+    """
+    if not liste_de_listes:
+        return []
+    
+    # تصفية القوائم الفارغة (التي ليس لها أول عنصر)
+    listes_non_vides = [lst for lst in liste_de_listes if lst]
+    
+    if not listes_non_vides:
+        return []
+    
+    # استخدام max مع key=lambda lst: lst[0] لمقارنة العناصر الأولى
+    return max(listes_non_vides, key=lambda lst: lst[0])
+
+def max_dernier(liste_de_listes):
+    """
+    ترجع القائمة التي لها أكبر قيمة في آخر عنصر
+    """
+    if not liste_de_listes:
+        return []
+    
+    # تصفية القوائم الفارغة (التي ليس لها آخر عنصر)
+    listes_non_vides = [lst for lst in liste_de_listes if lst]
+    
+    if not listes_non_vides:
+        return []
+    
+    # استخدام max مع key=lambda lst: lst[-1] لمقارنة العناصر الأخيرة
+    return max(listes_non_vides, key=lambda lst: lst[-1])
+
+# اختبار
+L = [[1, 2, 3, 0, -1], [13, 0], [10, 11, 12], [0, 13]]
+
+print("max_somme:", max_somme(L))      # [10, 11, 12]
+print("max_longueur:", max_longueur(L))  # [1, 2, 3, 0, -1]
+print("max_premier:", max_premier(L))  # [13, 0]
+print("max_dernier:", max_dernier(L))  # [0, 13]
+
 L = [(1,2), (3,6), (9,0)]
+
 print("Dictionnaire :", list_to_dict(L))
